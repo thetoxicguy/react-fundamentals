@@ -6,15 +6,31 @@
   <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <!-- // The following can be ommited when we use TypeScript of course -->
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script type="text/babel">
     // 🐨 Make a function called `message` which returns the JSX we want to share
 
+    const Message = ({subject, greeting}) => {
+      return(
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      )
+    }
+
+    // The following can be ommited when we use TypeScript of course
+    Message.propTypes = {
+      subject: PropTypes.isrequired,
+      subject: PropTypes.string,
+      greeting: PropTypes.string
+    }
     // 🐨 use that function in place of the divs below with:
-    // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
+    // 💰 {Message({children: 'Hello World'})} {Message({children: 'Goodbye World'})}
     const element = (
       <div className="container">
-        <div className="message">Hello World</div>
-        <div className="message">Goodbye World</div>
+        <Message greeting="Hello" subject="5" />
+        <Message greeting="Goodbye" subject="World!" />
       </div>
     )
 
